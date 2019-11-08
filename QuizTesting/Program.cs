@@ -44,9 +44,17 @@ namespace QuizTesting
                 this.dta = dta;
             }
 
-            public List<Employee> GetTopThreePaidEmployees()
+            public string GetTopThreePaidEmployees()
             {
-                return dta.GetTopThreePaidEmployees();
+                var employees = dta.GetTopThreePaidEmployees();
+                var resultString = String.Format(
+                    "1 name {0} and salary {1}" +
+                    "2 name {2} and salary {3}" +
+                    "3 name {4} and salary {5}"
+                    , employees[0].Name, employees[0].Salary,
+                    employees[1].Name, employees[1].Salary,
+                    employees[2].Name, employees[2].Salary);
+                return resultString;
             }
 
             public double GetSalaryOfEmployee(int id)
@@ -54,10 +62,9 @@ namespace QuizTesting
                 return dta.GetSalaryOfEmployee(id);
             }
         }
-
+            
         static void Main(string[] args)
         {
-
         }
     }
 }
